@@ -70,7 +70,8 @@ class LoginScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .gray
+        button.isEnabled = false
+        button.backgroundColor = .lightGray.withAlphaComponent(0.6)
         button.clipsToBounds = true
         button.layer.cornerRadius = 7.5
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -132,6 +133,19 @@ class LoginScreen: UIView {
     public func configTextFieldDelegate(delegate: UITextFieldDelegate) {
         emailTextField.delegate = delegate
         passwordTextField.delegate = delegate
+    }
+    
+    public func checkLoginButton() {
+        let emailTF = emailTextField.text ?? ""
+        let passTF = passwordTextField.text ?? ""
+        
+        if !emailTF.isEmpty && !passTF.isEmpty {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .lightGray
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .lightGray.withAlphaComponent(0.6)
+        }
     }
 
 }

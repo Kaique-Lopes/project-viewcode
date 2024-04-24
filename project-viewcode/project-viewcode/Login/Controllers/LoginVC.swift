@@ -32,7 +32,7 @@ extension LoginVC: LoginScreenProtocol {
 extension LoginVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(#function)
+        loginScreen?.checkLoginButton()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
